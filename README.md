@@ -95,10 +95,10 @@ struct MetaOperator;
 
 template<
     template<typename, typename> class Operator,
-    typename State,
-    typename Next
+    typename Next,
+    typename State
 >
-struct MetaOperator<Operator<State, Next>> {
+struct MetaOperator<Operator<Next, State>> {
     template<typename T1, typename T2>
     using template_type = Operator<T1, T2>;
     using next_type = Next;
