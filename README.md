@@ -33,8 +33,7 @@ int main() {
     FunctionOperator<
       SubscriptOperator<
         FunctionOperator<>
-     >
-   >;
+  >>;
   
   Pipeline pipeline({});
   
