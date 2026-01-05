@@ -122,7 +122,8 @@ struct OperatorTraits<
 {
     template<std::size_t T1, typename T2, typename T3>
     using template_type = Operator<T1, T2, T3>;
-    using next_n = Arity;
+
+    static constexpr std::size_t arity = Arity;
     using next_type = Next;
 };
 
