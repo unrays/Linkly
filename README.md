@@ -1,6 +1,7 @@
 # Operator
 
-> Operator is a C++ compile-time meta programming library for building composable operator pipelines. This library is intended for developers wishing to create their own DSL using ultra-high-performance, fully compile-time and type-safe operator pipelines.
+> Operator is a C++ compile-time meta programming library for building composable operator pipelines.  
+> This library is intended for developers wishing to create their own DSL using ultra-high-performance, fully compile-time and type-safe operator pipelines.
 
 ---
 
@@ -22,20 +23,23 @@
 6. [Roadmap](#roadmap)
 7. [License](#license)
 
-
 ---
 
 ## Motivation
-Originally, my plan was to implement a fluent design in my ECS to clarify the interactions with my personal ECS. I then got to work and began developing a small, entirely compile-time system. Gradually, this small side project transformed into a full-fledged project, which itself evolved into a library. The main problem with chaining compile-time operators is that it's difficult to extract information from the next node and adapt that node to the conditions of the previous one if everything is compiled-time. The solution, using template and `using` statements, allows me to model and recreate subsequent nodes from scratch with their original attributes, but adding the types and information of the current node, such as the data container or size constraints, for example.
+Originally, my plan was to implement a fluent design system for the front end of my ECS game engine. I started a week ago and I had never dealt with this kind of concept before.  I then got to work and began developing a small, entirely compile-time system. Gradually, this small side project transformed into a full-fledged project, which itself evolved into a library.  
+
+The main problem with chaining compile-time operators is that it's difficult to extract information from the next node and adapt that node to the conditions of the previous one if everything is compiled-time.  
+The solution, using template and `using` statements, allows me to model and recreate subsequent nodes from scratch with their original attributes, but adding the types and information of the current node, such as the data container or size constraints, for example.
 
 ---
 
 ## Installation
+
 Instructions on how to install, include, or build the library.
 
 ### Requirements
-- **C++ Standard:** C++11 up to C++26
-- **Compilers:** GCC 11+, Clang 13+, MSVC 2019+ (any compiler supporting C++11 to C++26).  
+- **C++ Standard:** C++11 up to C++26  
+- **Compilers:** GCC 11+, Clang 13+, MSVC 2019+ (any compiler supporting C++11 to C++26)  
 - **Dependencies:** Only the C++ standard library (`<tuple>`, `<type_traits>`, `<concepts>`, `<utility>`, `<iostream>`). No external dependencies.
 
 ### Include
@@ -44,16 +48,16 @@ This library is **header-only**, so you just need to include the main header in 
 ```cpp
 #include "operator.h"
 using namespace v6;
-```
+````
 
 ---
-
 
 ## Usage
 
 Basic usage of the library involves creating operator chains and terminating them with `Result` or your own implementation.
 
 ### Step 1: Create a pipeline
+
 ```cpp
 #include "operator.h"
 using namespace v6;
@@ -66,6 +70,7 @@ auto pipeline = FunctionOperator<0, std::tuple<>, SubscriptOperator<0, std::tupl
 ```
 
 ### Step 2: Execute the pipeline
+
 ```cpp
 #include "operator.h"
 using namespace v6;
@@ -75,6 +80,7 @@ pipeline(0, 250, 500)[750, 1000];
 ```
 
 ### Step 3: End the pipeline
+
 ```cpp
 #include "operator.h"
 using namespace v6;
@@ -137,7 +143,7 @@ struct FunctionOperatorBase<DerivedOperator<Arity, Next, State>> {
             ->onOperated(std::forward<Args>(args)...);
     }
 };
-  ```
+```
 
 ---
 
@@ -181,13 +187,15 @@ struct FunctionOperator_ :
 };
 ```
 
+---
+
 ## Contributing
 
 Contributions are welcome! You can help by:
 
-- Reporting bugs or issues
-- Suggesting new features or improvements
-- Submitting pull requests with fixes or new functionality
+* Reporting bugs or issues
+* Suggesting new features or improvements
+* Submitting pull requests with fixes or new functionality
 
 Please follow these guidelines:
 
@@ -202,11 +210,11 @@ Please follow these guidelines:
 
 Planned features and improvements for future releases:
 
-- [ ] Add support for additional operator types
-- [ ] Improve compile-time diagnostics and error messages
-- [ ] Extend examples and documentation
+* [ ] Add support for additional operator types
+* [ ] Improve compile-time diagnostics and error messages
+* [ ] Extend examples and documentation
 
-This roadmap may evolve as the library grows.
+> This roadmap may evolve as the library grows.
 
 ---
 
@@ -215,3 +223,4 @@ This roadmap may evolve as the library grows.
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 <p align="center"><sub>© Félix-Olivier Dumas 2026</sub></p>
+```
