@@ -2,6 +2,7 @@
 // Licensed under the terms described in the LICENSE file
 
 #include <iostream>
+#include <type_traits>
 
 namespace v4 {
     #define OFF 0
