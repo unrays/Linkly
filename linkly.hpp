@@ -23,14 +23,14 @@ namespace linkly {
 /********************************************/
 /*        GENERATE HAS FUNCTION MACROS      */
 /********************************************/
-#define LINKLY_GENERATE_HAS_FUNCTION_TRAIT(function_name)             \
-    template <typename T, typename = void>                            \
-    struct has_function_##function_name : std::false_type {};         \
-                                                                      \
-    template <typename T>                                             \
-    struct has_function_##function_name<                              \
-        T,                                                            \
-        std::void_t<decltype(std::declval<T>().function_name())>      \
+#define LINKLY_GENERATE_HAS_FUNCTION_TRAIT(function_name)        \
+    template <typename T, typename = void>                       \
+    struct has_function_##function_name : std::false_type {};    \
+                                                                 \
+    template <typename T>                                        \
+    struct has_function_##function_name<                         \
+        T,                                                       \
+        std::void_t<decltype(std::declval<T>().function_name())> \
     > : std::true_type {};
 
 #define LINKLY_GENERATE_HAS_FUNCTION_DEF(function_name)                             \
