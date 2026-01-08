@@ -195,8 +195,9 @@ private:
 
             >(std::move(concat_state_args)); // std::move the current state and passes it to the next node via its constructor
     }
-};
 
+    LINKLY_GENERATE_OPERATOR_ALIAS(EntityIndexerOperator, EntityIndexerOperator_);
+};
 ```
 
 ---
