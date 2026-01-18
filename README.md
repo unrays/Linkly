@@ -5,8 +5,8 @@
 [![C++ Version](https://img.shields.io/badge/C%2B%2B-17-blue)](#)
 [![Release](https://img.shields.io/badge/release-1.0.0-blueviolet)](#)
 
-Linkly is a C++ compile-time meta programming library for building composable operator pipelines.  
-This library is intended for developers wishing to create their own DSL using ultra-high-performance, fully compile-time and type-safe operator pipelines.
+Lynx is a C++ compile-time metaprogramming library for building composable operator pipelines.
+Part of the EXOTIC collection, it is intended for developers who want to build DSLs using type-safe, compile-time operator composition.
 
 ---
 
