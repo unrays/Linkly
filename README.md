@@ -31,7 +31,7 @@ Part of the EXOTIC collection, it is intended for developers who want to build D
 ---
 
 ## Motivation
-Originally, my plan was to implement a fluent design system for the front end of my ECS game engine. I started a week ago and I had never dealt with this kind of concept before.  I then got to work and began developing a small, entirely compile-time system. Gradually, this small side project transformed into a full-fledged project, which itself evolved into a library.  
+Originally, my plan was to implement a fluent design system for the front end of my ECS game engine. I started a week ago and I had never dealt with this kind of concept before. I then got to work and began developing a small, entirely compile-time system. Gradually, this small side project transformed into a full-fledged project, which itself evolved into a library.  
 
 The main problem with chaining compile-time elements is that, since these elements are compiled before being received in the previous node, it is not directly possible to interact with or modify its templated types.
 The solution, using template and `using` statements, allows me to model and recreate `subsequent nodes` from scratch with their original attributes, but adding the types and information of the current node, such as the data container or size constraints, for example.
@@ -53,8 +53,8 @@ Instructions on how to install, include, or build the library.
 This library is **header-only**, so you just need to include the main header in your project:
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 ````
 
 ---
@@ -66,8 +66,8 @@ Basic usage of the library involves creating operator chains and terminating the
 ### Step 1: Create a pipeline
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 // Create a FunctionOperator pipeline
 auto pipeline = FunctionOperator<SubscriptOperator<>>{};
@@ -79,8 +79,8 @@ auto pipeline = FunctionOperator<0, std::tuple<>, SubscriptOperator<0, std::tupl
 ### Step 2: Execute the pipeline
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 // Provide some arguments; the pipeline collects them internally
 pipeline(0, 250, 500)[750, 1000];
@@ -89,8 +89,8 @@ pipeline(0, 250, 500)[750, 1000];
 ### Step 3: End the pipeline
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 // Automatically terminates when pipeline reaches End
 auto final_state = pipeline(10, 20)[30, 40, 50]; // returns collected arguments (tuple by default)
@@ -103,8 +103,8 @@ auto final_state = pipeline(10, 20)[30, 40, 50]; // returns collected arguments 
 ### Example 1: Specify the size of arguments
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 auto pipeline = SubscriptOperator<3,
                     FunctionOperator<5,
@@ -123,8 +123,8 @@ pipeline[0, 10](20, 30, 40)[50]; // Doesn't compile
 #### One of the base provided by the API
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 template<typename>
 struct FunctionOperatorBase;
@@ -156,8 +156,8 @@ struct FunctionOperatorBase<DerivedOperator<Arity, Next, State>> {
 #### Example of implementation using this base
 
 ```cpp
-#include "linkly.hpp"
-using namespace linkly;
+#include "lynx.hpp"
+using namespace EXOTIC::lynx;
 
 template<
     std::size_t Arity, // Number of arguments required
@@ -243,6 +243,6 @@ Planned features and improvements for future releases:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSL License. See the [LICENSE](LICENSE) file for details.
 
 <p align="center"><sub>© Félix-Olivier Dumas 2026</sub></p>
